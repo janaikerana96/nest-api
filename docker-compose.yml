@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  dev-db:
+    image: mysql:5.7
+    ports: 
+      - 3306:3306
+    environment:
+      MYSQL_PASSWORD: q1w2e3r4t5
+      MYSQL_DATABASE: nest
+      MYSQL_ROOT_PASSWORD: q1w2e3r4t5
+    networks:
+      - nestapi
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./portainer-data:/data
+    ports:
+      - 9000:9000
+
+networks: 
+  nestapi: 
