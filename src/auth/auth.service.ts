@@ -42,6 +42,7 @@ export class AuthService {
 
     
   async signin(dto: AuthDto){ 
+    
         // find the user by email
     const user =
         await this.prisma.user.findUnique({
@@ -68,4 +69,5 @@ export class AuthService {
         delete user.hash;
         return user;
     }
+
 }
