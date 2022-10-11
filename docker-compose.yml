@@ -10,6 +10,16 @@ services:
       MYSQL_ROOT_PASSWORD: q1w2e3r4t5
     networks:
       - nestapi
+  test-db:
+    image: mysql:5.7
+    ports: 
+      - 3307:3306
+    environment:
+      MYSQL_PASSWORD: q1w2e3r4t5
+      MYSQL_DATABASE: nest
+      MYSQL_ROOT_PASSWORD: q1w2e3r4t5
+    networks:
+      - nestapi
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
