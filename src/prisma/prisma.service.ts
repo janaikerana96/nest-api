@@ -13,4 +13,12 @@ export class PrismaService extends PrismaClient {
             },
         });
     }
+// Teardown Logic Database for e2e Test
+    cleanDb() {
+        return this.$transaction([
+            this.bookmark.deleteMany(),
+            this.user.deleteMany(),
+        ])
+    }
 }
+
